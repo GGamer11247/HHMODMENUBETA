@@ -1,0 +1,1 @@
+﻿This is a beta build of the new version of the HammyHome mod menu. Bugs are very likely.

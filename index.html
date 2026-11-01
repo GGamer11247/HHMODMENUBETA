@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en" touch-action="none">
+<head>
+    
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e59c14">
+    <meta name="description" content="Design and care for virtual hamsters and their homes with Hammy Home.">
+    <meta name="color-scheme" content="light only">
+    <link rel="apple-touch-icon" href="./images/icon_192.png">
+    <title>HammyHome Mod</title>
+
+    <link rel="stylesheet" href="css/styles.min.css" >
+    
+    <script defer src="js/babylon.js"></script>
+    <script defer src="js/libs.js"></script>
+    <script defer src="js/ham.min.js"></script>
+    <script defer src="js/mod-menu.js"></script>
+
+
+    <style>
+        
+        html, body, div, span, h1, h2, h3, p, a, em, img, fieldset, form, label, legend, canvas, footer, header, section {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          font: inherit;
+          vertical-align: baseline
+        }
+
+        a { text-decoration: none; }
+
+        @font-face {
+        font-family: 'Muli';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./fonts/muli_v22_latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+    </style>
+
+    <style>
+        body {
+            font-family: 'Muli', sans-serif;
+            color: rgb(30, 30, 30);
+        }
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            touch-action: none;
+            overscroll-behavior: contain;
+        }
+        .full-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh; /* Dynamic viewport height for modern browsers */
+            display: block; /* Eliminates the inline baseline font gap */
+            outline: none;
+            overscroll-behavior: contain;
+        }
+
+        #start {
+            touch-action: auto;
+        }
+        #splash {
+            display: grid;
+            width: 100%; 
+            height: 100%;
+            place-items: center;
+            color: rgba(255,255,255, .8);
+            background-color: rgb(230, 156, 21);
+            text-align: center;
+        }
+        #splash h1 {
+            font-size: 52px;
+            line-height: 52px;
+            margin-left: 10px;
+            margin-right: 10px;
+            word-spacing: -12px;
+        }
+        #imgSplash {
+            max-width: 80vw;
+            max-height: 60vh;
+            height: auto;
+            width: auto;
+        }
+        #splash .appVersion {
+            padding: 6px;
+        }
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spinner {
+            -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+        }
+    </style>
+
+<script src="js/pep.min.js"></script>
+
+<script>
+    window.onload = function(){ 
+        var canvas = document.getElementById('mainCanvas');
+        var engine = new BABYLON.Engine(canvas, !true, { stencil: false });
+        createScene(engine);
+        document.getElementsByTagName("body")[0].setAttribute("oncontextmenu", "return false");
+    };
+</script>
+
+</head>
+<body touch-action="none">
+    <div id="splash">
+        <div>
+            <div style="position:relative;">
+                <img src="./images/icon_512.png" width="512" height="512" id="imgSplash" />
+                <div style="position:absolute; left:50%; top:31.8%; width:100%; height:58.8%">
+                    <img src="./images/spinner_512.png" id="imgSpinner" class="spinner" style="position:relative; left:-50%; max-width:100%; max-height:100%"  />
+                </div>
+            </div>
+            <h1 class="title">HammyHome Mod</h1>
+            <div class="appVersion">v1.5.1</div>
+        </div>
+    </div>
+    <div id="app-container" touch-action="none">
+        
+        <div id="main" touch-action="none" style="visibility: hidden;">
+            <canvas id="mainCanvas" class="full-screen" touch-action="none"></canvas>
+            <div id="aBowman">
+                <a target="_blank" rel="noopener" href="https://www.youtube.com/@GGamer11247">GGamer11247 <span class="icon-external-link"></span></a>
+            </div>
+        </div>
+
+        <div id="start" class="full-screen noselect" touch-action="auto" style="visibility: hidden;">
+            <div id="start-inner">
+                <h1>HammyHome Mod</h1>
+                <p id="appInfo"><a target="_blank" rel="noopener" href="https://www.youtube.com/@GGamer11247"><span id='appVersion'></span> modded by GGamer11247 <span class="icon-external-link"></span></a></p>
+                <div id="myHomes">
+                    <h2>My Hamster Homes</h2>
+                    <div class="horiz-scroll-cont">
+                    </div>
+                    <div class='instructions'>
+                        <div>Choose a starter home below.</div>
+                    </div>
+                </div>
+                <div id="starterHomes">
+                    <h2>Starter Homes</h2>
+                    <div class="horiz-scroll-cont">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
