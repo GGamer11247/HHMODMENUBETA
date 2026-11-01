@@ -1221,7 +1221,7 @@
           <div class="hhm-section">
             <h3>Simulation</h3>
             <label class="hhm-check"><input id="hhm-paused" type="checkbox"> Pause simulation</label>
-            <label class="hhm-field"><span>Time scale <output id="hhm-timescale-value">1×</output></span><input id="hhm-time-scale" type="range" class="hhm-slider" min="0" max="4" step="0.1" value="1"></label>
+            <label class="hhm-field"><span>Time scale <output id="hhm-timescale-value">1×</output></span><input id="hhm-time-scale" type="range" class="hhm-slider" min="-4" max="4" step="0.1" value="1"></label>
             <div class="hhm-row" style="margin-top:8px"><button class="hhm-btn secondary" data-timescale="0.25">¼×</button><button class="hhm-btn secondary" data-timescale="1">1×</button><button class="hhm-btn secondary" data-timescale="2">2×</button><button class="hhm-btn secondary" data-timescale="4">4×</button></div>
           </div>
           <div class="hhm-section">
